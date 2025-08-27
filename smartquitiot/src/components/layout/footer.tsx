@@ -123,7 +123,7 @@ export function Footer() {
               _placeholder={{ color: "gray.400" }}
               _focus={{ borderColor: "green.400", boxShadow: "0 0 0 1px var(--chakra-colors-green-400)" }}
             />
-            <Button colorScheme="green">Subscribe</Button>
+            <Button colorScheme="green" size="sm">Subscribe</Button>
           </HStack>
         </Box>
       </Container>

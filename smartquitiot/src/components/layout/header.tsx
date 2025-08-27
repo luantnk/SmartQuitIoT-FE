@@ -27,27 +27,27 @@ export function Header() {
 
           <HStack gap={8} display={{ base: "none", md: "flex" }}>
             <Link href="/">
-              <Text fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
+              <Text fontSize="sm" fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
                 Home
               </Text>
             </Link>
             <Link href="/dashboard">
-              <Text fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
+              <Text fontSize="sm" fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
                 Dashboard
               </Text>
             </Link>
             <Link href="/resources">
-              <Text fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
+              <Text fontSize="sm" fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
                 Resources
               </Text>
             </Link>
             <Link href="/community">
-              <Text fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
+              <Text fontSize="sm" fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
                 Community
               </Text>
             </Link>
             <Link href="/about">
-              <Text fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
+              <Text fontSize="sm" fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
                 About
               </Text>
             </Link>
@@ -63,8 +63,8 @@ export function Header() {
               </HStack>
             ) : (
               <HStack>
-                <Link href="/login"><Button variant="ghost">Login</Button></Link>
-                <Link href="/register"><Button colorScheme="green" size="lg">Get Started</Button></Link>
+                <Link href="/login"><Button variant="ghost" size="sm">Login</Button></Link>
+                <Link href="/register"><Button colorScheme="green" size="sm">Get Started</Button></Link>
               </HStack>
             )}
             <IconButton aria-label="Menu" display={{ base: "inline-flex", md: "none" }} variant="ghost">

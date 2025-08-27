@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import {
   Box,
   Container,
@@ -44,6 +45,7 @@ export default function LoginPage() {
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const toast = useToast()
+  const router = useRouter()
 
   const handleInputChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }))
@@ -97,6 +99,13 @@ export default function LoginPage() {
         duration: 3000,
         isClosable: true,
       })
+      
+      // Navigate to home page after successful login
+      if (mode === 'login') {
+        setTimeout(() => {
+          router.push('/')
+        }, 1000)
+      }
     }, 1500)
   }
 
