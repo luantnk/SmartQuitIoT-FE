@@ -15,20 +15,42 @@ export function Header() {
       <Container maxW="7xl" px={6}>
         <Flex h={16} align="center" justify="space-between">
           <HStack gap={3}>
-            <Link href="/" className="flex items-center space-x-2">
-              <Flex w={10} h={10} bg="green.500" rounded="full" align="center" justify="center">
-                <Text color="white" fontWeight="bold" fontSize="xl">S</Text>
-              </Flex>
-              <Text as="span" fontSize="xl" fontWeight="bold" color="green.600">SmartQuit</Text>
+            <Link href="/">
+              <HStack gap={2} align="center">
+                <Flex w={10} h={10} bg="green.500" rounded="full" align="center" justify="center">
+                  <Text color="white" fontWeight="bold" fontSize="xl">S</Text>
+                </Flex>
+                <Text fontSize="xl" fontWeight="bold" color="green.600">SmartQuit</Text>
+              </HStack>
             </Link>
           </HStack>
 
-          <HStack gap={6} display={{ base: "none", md: "flex" }}>
-            <Link href="/">Home</Link>
-            <Link href="/dashboard">Dashboard</Link>
-            <Link href="/resources">Resources</Link>
-            <Link href="/community">Community</Link>
-            <Link href="/about">About</Link>
+          <HStack gap={8} display={{ base: "none", md: "flex" }}>
+            <Link href="/">
+              <Text fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
+                Home
+              </Text>
+            </Link>
+            <Link href="/dashboard">
+              <Text fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
+                Dashboard
+              </Text>
+            </Link>
+            <Link href="/resources">
+              <Text fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
+                Resources
+              </Text>
+            </Link>
+            <Link href="/community">
+              <Text fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
+                Community
+              </Text>
+            </Link>
+            <Link href="/about">
+              <Text fontWeight="medium" color="gray.700" _hover={{ color: "green.600", cursor: "pointer" }} transition="color 0.2s">
+                About
+              </Text>
+            </Link>
           </HStack>
 
           <HStack gap={3}>

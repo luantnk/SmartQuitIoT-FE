@@ -37,69 +37,92 @@ const footerLinks = {
 }
 export function Footer() {
   return (
-    <Box as="footer" bg="gray.900" color="white">
+    <Box as="footer" bg="green.50" color="gray.800" borderTopWidth="1px" borderColor="green.100">
       <Container maxW="7xl" px={6} py={16}>
         <SimpleGrid columns={{ base: 1, md: 4 }} gap={12}>
           <Stack gap={6}>
             <HStack gap={3}>
               <Box w={10} h={10} bg="green.500" rounded="full" display="flex" alignItems="center" justifyContent="center">
-                <Text fontWeight="bold">S</Text>
+                <Text fontWeight="bold" color="white">S</Text>
               </Box>
-              <Text fontSize="2xl" fontWeight="bold">SmartQuit</Text>
+              <Text fontSize="2xl" fontWeight="bold" color="green.700">SmartQuit</Text>
             </HStack>
-            <Text color="gray.300">
+            <Text color="gray.600">
               Empowering millions of people to quit smoking and live healthier lives. Join our community and start your smoke-free journey today.
             </Text>
-            <Stack gap={2} color="gray.300">
-              <HStack gap={2}><Icon as={MdMail} /><Text>support@smartquit.com</Text></HStack>
-              <HStack gap={2}><Icon as={MdPhone} /><Text>+1 (555) 123-4567</Text></HStack>
-              <HStack gap={2}><Icon as={MdLocationOn} /><Text>123 Health Street, Wellness City, WC 12345</Text></HStack>
+            <Stack gap={2} color="gray.600">
+              <HStack gap={2}><Icon as={MdMail} color="green.600" /><Text>support@smartquit.com</Text></HStack>
+              <HStack gap={2}><Icon as={MdPhone} color="green.600" /><Text>+1 (555) 123-4567</Text></HStack>
+              <HStack gap={2}><Icon as={MdLocationOn} color="green.600" /><Text>123 Health Street, Wellness City, WC 12345</Text></HStack>
             </Stack>
           </Stack>
           <Stack gap={3}>
-            <Text fontWeight="bold">Product</Text>
+            <Text fontWeight="bold" color="green.700">Product</Text>
             {footerLinks.product.map(link => (
-              <Link key={link.name} href={link.href} className="text-gray-300 hover:text-white">
-                    {link.name}
-                  </Link>
+              <Link key={link.name} href={link.href}>
+                <Text color="gray.600" _hover={{ color: "green.600" }} transition="color 0.2s">
+                  {link.name}
+                </Text>
+              </Link>
             ))}
           </Stack>
           <Stack gap={3}>
-            <Text fontWeight="bold">Support</Text>
+            <Text fontWeight="bold" color="green.700">Support</Text>
             {footerLinks.support.map(link => (
-              <Link key={link.name} href={link.href} className="text-gray-300 hover:text-white">
-                    {link.name}
-                  </Link>
+              <Link key={link.name} href={link.href}>
+                <Text color="gray.600" _hover={{ color: "green.600" }} transition="color 0.2s">
+                  {link.name}
+                </Text>
+              </Link>
             ))}
           </Stack>
           <Stack gap={3}>
-            <Text fontWeight="bold">Company</Text>
+            <Text fontWeight="bold" color="green.700">Company</Text>
             {footerLinks.company.map(link => (
-              <Link key={link.name} href={link.href} className="text-gray-300 hover:text-white">
-                    {link.name}
-                  </Link>
+              <Link key={link.name} href={link.href}>
+                <Text color="gray.600" _hover={{ color: "green.600" }} transition="color 0.2s">
+                  {link.name}
+                </Text>
+              </Link>
             ))}
           </Stack>
         </SimpleGrid>
 
-        <Box borderTopWidth="1px" borderColor="gray.700" my={12} />
+        <Box borderTopWidth="1px" borderColor="green.200" my={12} />
 
         <SimpleGrid columns={{ base: 1, md: 2 }} gap={8} alignItems="center">
-          <Text color="gray.400">© 2024 SmartQuit. All rights reserved. Made with ❤️ for a healthier world.</Text>
-          <HStack gap={6} justify={{ base: "flex-start", md: "flex-end" }} color="gray.400">
-            <Link href="#" aria-label="Facebook"><Icon as={FaFacebook} boxSize={5} /></Link>
-            <Link href="#" aria-label="Twitter"><Icon as={FaTwitter} boxSize={5} /></Link>
-            <Link href="#" aria-label="Instagram"><Icon as={FaInstagram} boxSize={5} /></Link>
-            <Link href="#" aria-label="LinkedIn"><Icon as={FaLinkedin} boxSize={5} /></Link>
-            <Link href="#" aria-label="YouTube"><Icon as={FaYoutube} boxSize={5} /></Link>
+          <Text color="gray.500">© 2024 SmartQuit. All rights reserved. Made with ❤️ for a healthier world.</Text>
+          <HStack gap={6} justify={{ base: "flex-start", md: "flex-end" }} color="gray.500">
+            <Link href="#" aria-label="Facebook">
+              <Icon as={FaFacebook} boxSize={5} _hover={{ color: "green.600" }} transition="color 0.2s" />
+            </Link>
+            <Link href="#" aria-label="Twitter">
+              <Icon as={FaTwitter} boxSize={5} _hover={{ color: "green.600" }} transition="color 0.2s" />
+            </Link>
+            <Link href="#" aria-label="Instagram">
+              <Icon as={FaInstagram} boxSize={5} _hover={{ color: "green.600" }} transition="color 0.2s" />
+            </Link>
+            <Link href="#" aria-label="LinkedIn">
+              <Icon as={FaLinkedin} boxSize={5} _hover={{ color: "green.600" }} transition="color 0.2s" />
+            </Link>
+            <Link href="#" aria-label="YouTube">
+              <Icon as={FaYoutube} boxSize={5} _hover={{ color: "green.600" }} transition="color 0.2s" />
+            </Link>
           </HStack>
         </SimpleGrid>
 
-        <Box mt={16} bg="gray.800" rounded="lg" p={8} textAlign="center">
-          <Text fontSize="2xl" fontWeight="bold" mb={4}>Stay Updated</Text>
-          <Text color="gray.300" mb={6}>Get the latest tips, success stories, and updates from our community.</Text>
+        <Box mt={16} bg="white" rounded="lg" p={8} textAlign="center" boxShadow="sm" borderWidth="1px" borderColor="green.100">
+          <Text fontSize="2xl" fontWeight="bold" mb={4} color="green.700">Stay Updated</Text>
+          <Text color="gray.600" mb={6}>Get the latest tips, success stories, and updates from our community.</Text>
           <HStack maxW="md" mx="auto" gap={4} flexDir={{ base: "column", sm: "row" }}>
-            <Input type="email" placeholder="Enter your email" bg="gray.700" borderColor="gray.600" _placeholder={{ color: "gray.400" }} />
+            <Input 
+              type="email" 
+              placeholder="Enter your email" 
+              bg="gray.50" 
+              borderColor="green.200" 
+              _placeholder={{ color: "gray.400" }}
+              _focus={{ borderColor: "green.400", boxShadow: "0 0 0 1px var(--chakra-colors-green-400)" }}
+            />
             <Button colorScheme="green">Subscribe</Button>
           </HStack>
         </Box>
