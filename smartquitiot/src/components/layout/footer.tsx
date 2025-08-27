@@ -1,19 +1,9 @@
 "use client"
 
-import { Row, Col, Typography, Space, Divider } from "antd"
-import { 
-  FacebookOutlined, 
-  TwitterOutlined, 
-  InstagramOutlined, 
-  LinkedinOutlined,
-  YoutubeOutlined,
-  MailOutlined,
-  PhoneOutlined,
-  EnvironmentOutlined
-} from "@ant-design/icons"
 import Link from "next/link"
-
-const { Title, Paragraph } = Typography
+import { Box, Container, SimpleGrid, Stack, Text, HStack, Icon, Input, Button } from "@chakra-ui/react"
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa"
+import { MdMail, MdPhone, MdLocationOn } from "react-icons/md"
 
 const footerLinks = {
   product: [
@@ -45,163 +35,75 @@ const footerLinks = {
     { name: "Accessibility", href: "/accessibility" }
   ]
 }
-
-const socialLinks = [
-  { icon: <FacebookOutlined />, href: "#", label: "Facebook" },
-  { icon: <TwitterOutlined />, href: "#", label: "Twitter" },
-  { icon: <InstagramOutlined />, href: "#", label: "Instagram" },
-  { icon: <LinkedinOutlined />, href: "#", label: "LinkedIn" },
-  { icon: <YoutubeOutlined />, href: "#", label: "YouTube" }
-]
-
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-6 py-16">
-        <Row gutter={[48, 32]}>
-          {/* Company Info */}
-          <Col xs={24} md={8}>
-            <div className="space-y-6">
-              <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-xl font-bold">S</span>
-                </div>
-                <Title level={3} className="!mb-0 !text-white">
-                  SmartQuit
-                </Title>
-              </div>
-              
-              <Paragraph className="!text-gray-300 !mb-0">
-                Empowering millions of people to quit smoking and live healthier lives. 
-                Join our community and start your smoke-free journey today.
-              </Paragraph>
-              
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3 text-gray-300">
-                  <MailOutlined />
-                  <span>support@smartquit.com</span>
-                </div>
-                <div className="flex items-center space-x-3 text-gray-300">
-                  <PhoneOutlined />
-                  <span>+1 (555) 123-4567</span>
-                </div>
-                <div className="flex items-center space-x-3 text-gray-300">
-                  <EnvironmentOutlined />
-                  <span>123 Health Street, Wellness City, WC 12345</span>
-                </div>
-              </div>
-            </div>
-          </Col>
-
-          {/* Footer Links */}
-          <Col xs={24} md={4}>
-            <Title level={5} className="!text-white !mb-4">
-              Product
-            </Title>
-            <div className="space-y-2">
-              {footerLinks.product.map((link) => (
-                <div key={link.name}>
-                  <Link href={link.href} className="text-gray-300 hover:text-white transition-colors">
+    <Box as="footer" bg="gray.900" color="white">
+      <Container maxW="7xl" px={6} py={16}>
+        <SimpleGrid columns={{ base: 1, md: 4 }} gap={12}>
+          <Stack gap={6}>
+            <HStack gap={3}>
+              <Box w={10} h={10} bg="green.500" rounded="full" display="flex" alignItems="center" justifyContent="center">
+                <Text fontWeight="bold">S</Text>
+              </Box>
+              <Text fontSize="2xl" fontWeight="bold">SmartQuit</Text>
+            </HStack>
+            <Text color="gray.300">
+              Empowering millions of people to quit smoking and live healthier lives. Join our community and start your smoke-free journey today.
+            </Text>
+            <Stack gap={2} color="gray.300">
+              <HStack gap={2}><Icon as={MdMail} /><Text>support@smartquit.com</Text></HStack>
+              <HStack gap={2}><Icon as={MdPhone} /><Text>+1 (555) 123-4567</Text></HStack>
+              <HStack gap={2}><Icon as={MdLocationOn} /><Text>123 Health Street, Wellness City, WC 12345</Text></HStack>
+            </Stack>
+          </Stack>
+          <Stack gap={3}>
+            <Text fontWeight="bold">Product</Text>
+            {footerLinks.product.map(link => (
+              <Link key={link.name} href={link.href} className="text-gray-300 hover:text-white">
                     {link.name}
                   </Link>
-                </div>
-              ))}
-            </div>
-          </Col>
-
-          <Col xs={24} md={4}>
-            <Title level={5} className="!text-white !mb-4">
-              Support
-            </Title>
-            <div className="space-y-2">
-              {footerLinks.support.map((link) => (
-                <div key={link.name}>
-                  <Link href={link.href} className="text-gray-300 hover:text-white transition-colors">
+            ))}
+          </Stack>
+          <Stack gap={3}>
+            <Text fontWeight="bold">Support</Text>
+            {footerLinks.support.map(link => (
+              <Link key={link.name} href={link.href} className="text-gray-300 hover:text-white">
                     {link.name}
                   </Link>
-                </div>
-              ))}
-            </div>
-          </Col>
-
-          <Col xs={24} md={4}>
-            <Title level={5} className="!text-white !mb-4">
-              Company
-            </Title>
-            <div className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <div key={link.name}>
-                  <Link href={link.href} className="text-gray-300 hover:text-white transition-colors">
+            ))}
+          </Stack>
+          <Stack gap={3}>
+            <Text fontWeight="bold">Company</Text>
+            {footerLinks.company.map(link => (
+              <Link key={link.name} href={link.href} className="text-gray-300 hover:text-white">
                     {link.name}
                   </Link>
-                </div>
-              ))}
-            </div>
-          </Col>
+            ))}
+          </Stack>
+        </SimpleGrid>
 
-          <Col xs={24} md={4}>
-            <Title level={5} className="!text-white !mb-4">
-              Legal
-            </Title>
-            <div className="space-y-2">
-              {footerLinks.legal.map((link) => (
-                <div key={link.name}>
-                  <Link href={link.href} className="text-gray-300 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </Col>
-        </Row>
+        <Box borderTopWidth="1px" borderColor="gray.700" my={12} />
 
-        <Divider className="!border-gray-700 !my-12" />
+        <SimpleGrid columns={{ base: 1, md: 2 }} gap={8} alignItems="center">
+          <Text color="gray.400">© 2024 SmartQuit. All rights reserved. Made with ❤️ for a healthier world.</Text>
+          <HStack gap={6} justify={{ base: "flex-start", md: "flex-end" }} color="gray.400">
+            <Link href="#" aria-label="Facebook"><Icon as={FaFacebook} boxSize={5} /></Link>
+            <Link href="#" aria-label="Twitter"><Icon as={FaTwitter} boxSize={5} /></Link>
+            <Link href="#" aria-label="Instagram"><Icon as={FaInstagram} boxSize={5} /></Link>
+            <Link href="#" aria-label="LinkedIn"><Icon as={FaLinkedin} boxSize={5} /></Link>
+            <Link href="#" aria-label="YouTube"><Icon as={FaYoutube} boxSize={5} /></Link>
+          </HStack>
+        </SimpleGrid>
 
-        {/* Bottom Section */}
-        <Row gutter={[32, 16]} align="middle">
-          <Col xs={24} md={12}>
-            <Paragraph className="!text-gray-400 !mb-0">
-              © 2024 SmartQuit. All rights reserved. Made with ❤️ for a healthier world.
-            </Paragraph>
-          </Col>
-          
-          <Col xs={24} md={12} className="text-right">
-            <Space size="large">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="text-gray-400 hover:text-white transition-colors text-xl"
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </Space>
-          </Col>
-        </Row>
-
-        {/* Newsletter Signup */}
-        <div className="mt-16 bg-gray-800 rounded-lg p-8 text-center">
-          <Title level={3} className="!text-2xl !font-bold !text-white mb-4">
-            Stay Updated
-          </Title>
-          <Paragraph className="!text-gray-300 !mb-6 max-w-2xl mx-auto">
-            Get the latest tips, success stories, and updates from our community. 
-            Join thousands of people on their journey to a smoke-free life.
-          </Paragraph>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
-            />
-            <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-              Subscribe
-            </button>
-          </div>
-        </div>
-      </div>
-    </footer>
+        <Box mt={16} bg="gray.800" rounded="lg" p={8} textAlign="center">
+          <Text fontSize="2xl" fontWeight="bold" mb={4}>Stay Updated</Text>
+          <Text color="gray.300" mb={6}>Get the latest tips, success stories, and updates from our community.</Text>
+          <HStack maxW="md" mx="auto" gap={4} flexDir={{ base: "column", sm: "row" }}>
+            <Input type="email" placeholder="Enter your email" bg="gray.700" borderColor="gray.600" _placeholder={{ color: "gray.400" }} />
+            <Button colorScheme="green">Subscribe</Button>
+          </HStack>
+        </Box>
+      </Container>
+    </Box>
   )
 }

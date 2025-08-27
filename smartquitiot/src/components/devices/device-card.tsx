@@ -1,8 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { Card, Typography, Tag, Button, Space } from "antd"
 import { Device } from "@/types/common"
-import { cn } from "@/lib/utils"
 
 interface DeviceCardProps {
   device: Device
@@ -15,13 +12,13 @@ export function DeviceCard({ device, onEdit, onDelete, onViewDetails }: DeviceCa
   const getStatusColor = (status: Device["status"]) => {
     switch (status) {
       case "online":
-        return "bg-green-100 text-green-800 border-green-200"
+        return "green"
       case "offline":
-        return "bg-gray-100 text-gray-800 border-gray-200"
+        return "default"
       case "error":
-        return "bg-red-100 text-red-800 border-red-200"
+        return "red"
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200"
+        return "default"
     }
   }
 
@@ -40,68 +37,46 @@ export function DeviceCard({ device, onEdit, onDelete, onViewDetails }: DeviceCa
 
   return (
     <Card className="hover:shadow-md transition-shadow">
-      <CardHeader className="pb-3">
+      <div className="p-4">
         <div className="flex items-start justify-between">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <span className="text-2xl">{getTypeIcon(device.type)}</span>
             <div>
-              <CardTitle className="text-lg">{device.name}</CardTitle>
-              <CardDescription className="capitalize">{device.type}</CardDescription>
+              <Typography.Title level={5} className="!mb-0 !text-gray-800">{device.name}</Typography.Title>
+              <Typography.Text type="secondary" className="capitalize">{device.type}</Typography.Text>
             </div>
           </div>
-          <Badge 
-            variant="outline" 
-            className={cn("capitalize", getStatusColor(device.status))}
-          >
+          <Tag color={getStatusColor(device.status)} className="capitalize">
             {device.status}
-          </Badge>
+          </Tag>
         </div>
-      </CardHeader>
-      
-      <CardContent className="space-y-4">
+
         {device.location && (
-          <div className="text-sm text-muted-foreground">
-            📍 {device.location}
-          </div>
+          <div className="text-sm text-gray-500 mt-3">📍 {device.location}</div>
         )}
-        
-        <div className="text-xs text-muted-foreground">
+
+        <div className="text-xs text-gray-400 mt-2">
           Last updated: {new Date(device.updatedAt).toLocaleDateString()}
         </div>
-        
-        <div className="flex space-x-2">
+
+        <Space className="mt-4 w-full" wrap>
           {onViewDetails && (
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => onViewDetails(device.id)}
-              className="flex-1"
-            >
+            <Button onClick={() => onViewDetails(device.id)}>
               View Details
             </Button>
           )}
-          
           {onEdit && (
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => onEdit(device)}
-            >
+            <Button onClick={() => onEdit(device)}>
               Edit
             </Button>
           )}
-          
           {onDelete && (
-            <Button 
-              variant="destructive" 
-              size="sm" 
-              onClick={() => onDelete(device.id)}
-            >
+            <Button danger onClick={() => onDelete(device.id)}>
               Delete
             </Button>
           )}
-        </div>
-      </CardContent>
+        </Space>
+      </div>
     </Card>
   )
 }

@@ -2,8 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { QueryProvider } from "@/providers/query-provider"
-import { AntdRegistry } from "@ant-design/nextjs-registry"
-import { ConfigProvider } from "antd"
+import { ChakraProviders } from "@/providers/chakra-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -23,25 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AntdRegistry>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: "#1890ff",
-                colorSuccess: "#52c41a",
-                colorWarning: "#faad14",
-                colorError: "#ff4d4f",
-                colorInfo: "#1890ff",
-                borderRadius: 8,
-                fontFamily: inter.style.fontFamily,
-              },
-            }}
-          >
-            <QueryProvider>
-              {children}
-            </QueryProvider>
-          </ConfigProvider>
-        </AntdRegistry>
+        <ChakraProviders>
+          <QueryProvider>
+            {children}
+          </QueryProvider>
+        </ChakraProviders>
       </body>
     </html>
   )

@@ -118,13 +118,13 @@ const getCategoryColor = (category: string) => {
 
 export function ResourcesSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="section soft-section">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <Title level={2} className="!text-4xl !font-bold !text-gray-900 mb-4">
+          <Title level={2} className="section-title mb-4">
             Educational Resources & Guides
           </Title>
-          <Paragraph className="!text-xl !text-gray-600 max-w-3xl mx-auto">
+          <Paragraph className="section-subtitle">
             Access comprehensive resources, guides, and educational materials to support your quit smoking journey. 
             From beginner basics to advanced strategies, we have everything you need.
           </Paragraph>
@@ -135,7 +135,7 @@ export function ResourcesSection() {
             <Col xs={24} sm={12} lg={8} key={resource.id}>
               <Card 
                 hoverable
-                className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="h-full card-elevated hover:shadow-xl transition-all duration-300"
                 bodyStyle={{ padding: "24px" }}
               >
                 <div className="space-y-4">
@@ -175,9 +175,7 @@ export function ResourcesSection() {
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {resource.tags.slice(0, 3).map((tag, index) => (
-                      <Tag key={index} size="small">
-                        {tag}
-                      </Tag>
+                      <Tag key={index}>{tag}</Tag>
                     ))}
                   </div>
 
@@ -217,7 +215,7 @@ export function ResourcesSection() {
           </Space>
         </div>
 
-        <div className="mt-16 bg-white rounded-lg p-8 shadow-lg">
+        <div className="mt-16 bg-white rounded-lg p-8 shadow-md">
           <Row gutter={[32, 32]} align="middle">
             <Col xs={24} md={16}>
               <Title level={3} className="!text-2xl !font-bold !text-gray-800 mb-4">
@@ -234,8 +232,8 @@ export function ResourcesSection() {
               </Link>
             </Col>
             <Col xs={24} md={8} className="text-center">
-              <div className="w-32 h-32 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
-                <BookOutlined className="text-5xl text-blue-600" />
+              <div className="w-32 h-32 bg-emerald-100 rounded-full flex items-center justify-center mx-auto">
+                <BookOutlined className="text-5xl text-emerald-600" />
               </div>
             </Col>
           </Row>

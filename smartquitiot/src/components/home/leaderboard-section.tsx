@@ -1,6 +1,6 @@
 "use client"
 
-import { Row, Col, Typography, Card, Avatar, List, Tag, Button } from "antd"
+import { Row, Col, Typography, Card, Avatar, List, Button } from "antd"
 import { 
   TrophyOutlined, 
   CrownOutlined, 
@@ -78,28 +78,17 @@ const getTierIcon = (tier: string) => {
   }
 }
 
-const getTierColor = (tier: string) => {
-  switch (tier) {
-    case "gold":
-      return "bg-yellow-100 text-yellow-800 border-yellow-200"
-    case "silver":
-      return "bg-gray-100 text-gray-800 border-gray-200"
-    case "bronze":
-      return "bg-orange-100 text-orange-800 border-orange-200"
-    default:
-      return "bg-blue-100 text-blue-800 border-blue-200"
-  }
-}
+// Tier color mapping removed to simplify visuals
 
 export function LeaderboardSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="section soft-section">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <Title level={2} className="!text-4xl !font-bold !text-gray-900 mb-4">
+          <Title level={2} className="section-title mb-4">
             Top Achievers This Month
           </Title>
-          <Paragraph className="!text-xl !text-gray-600 max-w-3xl mx-auto">
+          <Paragraph className="section-subtitle">
             Be inspired by our community champions who have achieved remarkable success 
             in their quit smoking journey.
           </Paragraph>
@@ -110,11 +99,11 @@ export function LeaderboardSection() {
             <Card 
               title={
                 <div className="flex items-center space-x-2">
-                  <FireOutlined className="text-orange-500" />
+                  <FireOutlined className="text-emerald-600" />
                   <span>Monthly Leaderboard</span>
                 </div>
               }
-              className="shadow-lg border-0"
+              className="card-elevated"
             >
               <List
                 dataSource={leaderboardData}
@@ -143,11 +132,11 @@ export function LeaderboardSection() {
                           
                           <div className="flex items-center space-x-4 text-sm text-gray-600">
                             <span className="flex items-center space-x-1">
-                              <FireOutlined className="text-orange-500" />
+                              <FireOutlined className="text-emerald-600" />
                               <span>{item.streak} days</span>
                             </span>
                             <span className="flex items-center space-x-1">
-                              <DollarOutlined className="text-green-500" />
+                              <DollarOutlined className="text-emerald-600" />
                               <span>${item.moneySaved}</span>
                             </span>
                             <span className="flex items-center space-x-1">
@@ -159,7 +148,7 @@ export function LeaderboardSection() {
                       </div>
                       
                       <div className="text-right">
-                        <div className="text-2xl font-bold text-blue-600">
+                        <div className="text-2xl font-bold text-emerald-600">
                           {item.points}
                         </div>
                         <div className="text-sm text-gray-500">points</div>
@@ -183,11 +172,11 @@ export function LeaderboardSection() {
             <div className="space-y-6">
               <Card 
                 title="How to Get on the Leaderboard"
-                className="shadow-lg border-0"
+                className="card-elevated"
               >
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                    <div className="w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
                       1
                     </div>
                     <div>
@@ -197,7 +186,7 @@ export function LeaderboardSection() {
                   </div>
                   
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                    <div className="w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
                       2
                     </div>
                     <div>
@@ -207,7 +196,7 @@ export function LeaderboardSection() {
                   </div>
                   
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                    <div className="w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
                       3
                     </div>
                     <div>
@@ -220,11 +209,11 @@ export function LeaderboardSection() {
 
               <Card 
                 title="Your Progress"
-                className="shadow-lg border-0"
+                className="card-elevated"
               >
                 <div className="text-center space-y-4">
-                  <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
-                    <TrophyOutlined className="text-3xl text-blue-600" />
+                  <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto">
+                    <TrophyOutlined className="text-3xl text-emerald-600" />
                   </div>
                   
                   <div>

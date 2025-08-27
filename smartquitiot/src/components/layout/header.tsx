@@ -1,150 +1,56 @@
 "use client"
 
 import { useState } from "react"
-import { Layout, Menu, Button, Avatar, Dropdown, Space, Typography } from "antd"
-import { 
-  MenuOutlined, 
-  UserOutlined, 
-  LogoutOutlined, 
-  BellOutlined,
-  TrophyOutlined,
-  BookOutlined,
-  TeamOutlined,
-  SettingOutlined
-} from "@ant-design/icons"
 import Link from "next/link"
-
-const { Header: AntHeader } = Layout
-const { Title } = Typography
+import { Box, Container, Flex, HStack, IconButton, Button, Text } from "@chakra-ui/react"
+import { FiMenu, FiBell } from "react-icons/fi"
 
 export function Header() {
-  const [isLoggedIn] = useState(false) // This would come from auth context
-
-  const menuItems = [
-    {
-      key: "home",
-      label: <Link href="/">Home</Link>,
-    },
-    {
-      key: "dashboard",
-      label: <Link href="/dashboard">Dashboard</Link>,
-    },
-    {
-      key: "resources",
-      label: <Link href="/resources">Resources</Link>,
-    },
-    {
-      key: "community",
-      label: <Link href="/community">Community</Link>,
-    },
-    {
-      key: "about",
-      label: <Link href="/about">About</Link>,
-    },
-  ]
-
-  const userMenuItems = [
-    {
-      key: "profile",
-      label: "My Profile",
-      icon: <UserOutlined />,
-    },
-    {
-      key: "dashboard",
-      label: "Dashboard",
-      icon: <TrophyOutlined />,
-    },
-    {
-      key: "diary",
-      label: "Smoking Diary",
-      icon: <BookOutlined />,
-    },
-    {
-      key: "community",
-      label: "Community",
-      icon: <TeamOutlined />,
-    },
-    {
-      key: "settings",
-      label: "Settings",
-      icon: <SettingOutlined />,
-    },
-    {
-      type: "divider" as const,
-    },
-    {
-      key: "logout",
-      label: "Logout",
-      icon: <LogoutOutlined />,
-    },
-  ]
+  const [isLoggedIn] = useState(false)
+  const bg = "whiteAlpha.800"
+  const border = "gray.200"
 
   return (
-    <AntHeader className="bg-white shadow-sm border-b border-gray-200 px-6">
-      <div className="flex items-center justify-between h-full">
-        {/* Logo */}
-        <div className="flex items-center">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-              <span className="text-white text-xl font-bold">S</span>
-            </div>
-            <Title level={3} className="!mb-0 !text-blue-600">
-              SmartQuit
-            </Title>
-          </Link>
-        </div>
+    <Box as="header" position="sticky" top={0} zIndex={50} bg={bg} backdropFilter="saturate(180%) blur(6px)" borderBottomWidth="1px" borderColor={border}>
+      <Container maxW="7xl" px={6}>
+        <Flex h={16} align="center" justify="space-between">
+          <HStack gap={3}>
+            <Link href="/" className="flex items-center space-x-2">
+              <Flex w={10} h={10} bg="green.500" rounded="full" align="center" justify="center">
+                <Text color="white" fontWeight="bold" fontSize="xl">S</Text>
+              </Flex>
+              <Text as="span" fontSize="xl" fontWeight="bold" color="green.600">SmartQuit</Text>
+            </Link>
+          </HStack>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:block">
-          <Menu
-            mode="horizontal"
-            items={menuItems}
-            className="border-0 bg-transparent"
-          />
-        </div>
+          <HStack gap={6} display={{ base: "none", md: "flex" }}>
+            <Link href="/">Home</Link>
+            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/resources">Resources</Link>
+            <Link href="/community">Community</Link>
+            <Link href="/about">About</Link>
+          </HStack>
 
-        {/* Right Side Actions */}
-        <div className="flex items-center space-x-4">
-          {isLoggedIn ? (
-            <>
-              <Button 
-                type="text" 
-                icon={<BellOutlined />} 
-                className="text-gray-600"
-              />
-              <Dropdown
-                menu={{ items: userMenuItems }}
-                placement="bottomRight"
-                trigger={["click"]}
-              >
-                <Avatar 
-                  size={40} 
-                  icon={<UserOutlined />} 
-                  className="cursor-pointer"
-                />
-              </Dropdown>
-            </>
-          ) : (
-            <Space>
-              <Link href="/login">
-                <Button type="text">Login</Button>
-              </Link>
-              <Link href="/register">
-                <Button type="primary" size="large">
-                  Get Started
-                </Button>
-              </Link>
-            </Space>
-          )}
-
-          {/* Mobile Menu Button */}
-          <Button
-            type="text"
-            icon={<MenuOutlined />}
-            className="md:hidden"
-          />
-        </div>
-      </div>
-    </AntHeader>
+          <HStack gap={3}>
+            {isLoggedIn ? (
+              <HStack>
+                <IconButton aria-label="Notifications" variant="ghost">
+                  <FiBell />
+                </IconButton>
+                <Box w={8} h={8} rounded="full" bg="green.200" />
+              </HStack>
+            ) : (
+              <HStack>
+                <Link href="/login"><Button variant="ghost">Login</Button></Link>
+                <Link href="/register"><Button colorScheme="green" size="lg">Get Started</Button></Link>
+              </HStack>
+            )}
+            <IconButton aria-label="Menu" display={{ base: "inline-flex", md: "none" }} variant="ghost">
+              <FiMenu />
+            </IconButton>
+          </HStack>
+        </Flex>
+      </Container>
+    </Box>
   )
 }

@@ -101,13 +101,13 @@ const benefits = [
 
 export function MembershipSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="section soft-section">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <Title level={2} className="!text-4xl !font-bold !text-gray-900 mb-4">
+          <Title level={2} className="section-title mb-4">
             Choose Your Success Path
           </Title>
-          <Paragraph className="!text-xl !text-gray-600 max-w-3xl mx-auto">
+          <Paragraph className="section-subtitle">
             Start with our free plan and upgrade as you need more support. 
             Every plan is designed to help you succeed in your quit smoking journey.
           </Paragraph>
@@ -117,8 +117,8 @@ export function MembershipSection() {
           {membershipPlans.map((plan, index) => (
             <Col xs={24} md={8} key={index}>
               <Card 
-                className={`h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br ${plan.color} ${
-                  plan.popular ? 'ring-2 ring-blue-500 scale-105' : ''
+                className={`h-full card-elevated transition-all duration-300 ${
+                  plan.popular ? 'ring-2 ring-blue-500 scale-[1.01]' : ''
                 }`}
                 bodyStyle={{ padding: "32px 24px" }}
               >
@@ -215,22 +215,22 @@ export function MembershipSection() {
           </Row>
         </div>
 
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-center text-white">
+        <div className="soft-gradient rounded-2xl p-12 text-center">
           <Title level={3} className="!text-3xl !font-bold !text-white mb-4">
             Ready to Transform Your Life?
           </Title>
-          <Paragraph className="!text-xl !text-blue-100 mb-8 max-w-2xl mx-auto">
+          <Paragraph className="!text-xl theme-muted mb-8 max-w-2xl mx-auto">
             Join thousands of people who have successfully quit smoking with SmartQuit. 
             Start your journey today with our 7-day free trial.
           </Paragraph>
           <Space size="large">
             <Link href="/register">
-              <Button type="primary" size="large" className="h-12 px-8 text-lg bg-white text-blue-600 border-white hover:bg-gray-50">
+              <Button type="primary" size="large" className="h-12 px-8 text-lg">
                 Start Free Trial
               </Button>
             </Link>
             <Link href="/membership/compare">
-              <Button size="large" className="h-12 px-8 text-lg text-white border-white hover:bg-white hover:text-blue-600">
+              <Button size="large" className="h-12 px-8 text-lg">
                 Compare Plans
               </Button>
             </Link>

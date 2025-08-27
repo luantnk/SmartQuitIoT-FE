@@ -6,8 +6,7 @@ import {
   HeartOutlined, 
   MessageOutlined, 
   EyeOutlined,
-  CalendarOutlined,
-  UserOutlined
+  CalendarOutlined
 } from "@ant-design/icons"
 import Link from "next/link"
 
@@ -93,13 +92,13 @@ const getCategoryIcon = (category: string) => {
 
 export function BlogSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="section soft-section">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <Title level={2} className="!text-4xl !font-bold !text-gray-900 mb-4">
+          <Title level={2} className="section-title mb-4">
             Community Stories & Tips
           </Title>
-          <Paragraph className="!text-xl !text-gray-600 max-w-3xl mx-auto">
+          <Paragraph className="section-subtitle">
             Read inspiring success stories, expert advice, and practical tips from our community. 
             Learn from others who have walked the same path.
           </Paragraph>
@@ -110,10 +109,10 @@ export function BlogSection() {
             <Col xs={24} md={8} key={post.id}>
               <Card 
                 hoverable
-                className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="h-full card-elevated hover:shadow-xl transition-all duration-300"
                 cover={
-                  <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                    <BookOutlined className="text-6xl text-blue-500" />
+                  <div className="h-48 bg-gradient-to-br from-emerald-50 to-emerald-100 flex items-center justify-center">
+                    <BookOutlined className="text-6xl text-emerald-600" />
                   </div>
                 }
                 actions={[
@@ -169,9 +168,7 @@ export function BlogSection() {
 
                   <div className="flex flex-wrap gap-2">
                     {post.tags.slice(0, 2).map((tag, index) => (
-                      <Tag key={index} size="small">
-                        {tag}
-                      </Tag>
+                      <Tag key={index}>{tag}</Tag>
                     ))}
                   </div>
 

@@ -1,4 +1,4 @@
-export interface ActionResponse<T = any> {
+export interface ActionResponse<T = unknown> {
   success: boolean
   data?: T
   error?: string
@@ -16,5 +16,5 @@ export interface PaginatedResponse<T> {
 export interface ApiError {
   message: string
   code?: string
-  details?: Record<string, any>
+  details?: Record<string, unknown>
 }

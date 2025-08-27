@@ -2,10 +2,7 @@
 
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, Typography, Form, Input, Button, Alert } from "antd"
 import { loginSchema, type LoginForm } from "@/types/forms"
 
 interface LoginFormProps {
@@ -31,48 +28,56 @@ export function LoginForm({ onSubmit, isLoading = false }: LoginFormProps) {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader>
-        <CardTitle>Welcome back</CardTitle>
-        <CardDescription>
+    <Card className="w-full max-w-md mx-auto shadow-md">
+      <div className="p-6">
+        <Typography.Title level={3} className="!mb-1 !text-gray-800">
+          Welcome back
+        </Typography.Title>
+        <Typography.Paragraph className="!mb-6 !text-gray-600">
           Enter your credentials to access your account
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
+        </Typography.Paragraph>
+
         <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="Enter your email"
-              {...register("email")}
-              className={errors.email ? "border-red-500" : ""}
-            />
-            {errors.email && (
-              <p className="text-sm text-red-500">{errors.email.message}</p>
-            )}
-          </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              type="password"
-              placeholder="Enter your password"
-              {...register("password")}
-              className={errors.password ? "border-red-500" : ""}
-            />
-            {errors.password && (
-              <p className="text-sm text-red-500">{errors.password.message}</p>
-            )}
-          </div>
-          
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Signing in..." : "Sign in"}
-          </Button>
+          <Form layout="vertical">
+            <Form.Item
+              label="Email"
+              validateStatus={errors.email ? "error" : ""}
+              help={errors.email?.message}
+            >
+              <Input
+                id="email"
+                type="email"
+                placeholder="Enter your email"
+                {...register("email")}
+                size="large"
+              />
+            </Form.Item>
+
+            <Form.Item
+              label="Password"
+              validateStatus={errors.password ? "error" : ""}
+              help={errors.password?.message}
+            >
+              <Input.Password
+                id="password"
+                placeholder="Enter your password"
+                {...register("password")}
+                size="large"
+              />
+            </Form.Item>
+
+            <Button
+              type="primary"
+              htmlType="submit"
+              block
+              size="large"
+              loading={isLoading}
+            >
+              {isLoading ? "Signing in..." : "Sign in"}
+            </Button>
+          </Form>
         </form>
-      </CardContent>
+      </div>
     </Card>
   )
 }
