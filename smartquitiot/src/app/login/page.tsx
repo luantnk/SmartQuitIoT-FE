@@ -101,14 +101,19 @@ export default function LoginPage() {
     setTimeout(() => {
       setIsLoading(false)
       if (mode === 'login') {
+        // Demo: admin/coach redirect (normalize input)
+        const emailNorm = formData.email.trim().toLowerCase()
+        const passNorm = formData.password.trim()
+        const isAdmin = emailNorm === 'admin@gmail.com' && passNorm === 'Password123@'
+        const isCoach = emailNorm === 'coach@gmail.com' && passNorm === 'Password123@'
         toast({
-          title: 'Welcome back!',
-          description: 'You have successfully logged in.',
+          title: isAdmin ? 'Welcome, Admin!' : isCoach ? 'Welcome, Coach!' : 'Welcome back!',
+          description: isAdmin ? 'Redirecting to admin dashboard.' : isCoach ? 'Redirecting to coach dashboard.' : 'You have successfully logged in.',
           status: 'success',
-          duration: 2000,
+          duration: 1500,
           isClosable: true,
         })
-        router.push('/')
+        router.push(isAdmin ? '/admin' : isCoach ? '/coach' : '/')
         return
       }
 
@@ -132,7 +137,7 @@ export default function LoginPage() {
         duration: 3000,
         isClosable: true,
       })
-    }, 1200)
+    }, 300)
   }
 
   const renderForm = () => {
@@ -373,7 +378,7 @@ export default function LoginPage() {
           {/* Left Side - Branding */}
           <Box flex={1} textAlign={{ base: "center", lg: "left" }}>
             <HStack spacing={3} justify={{ base: "center", lg: "flex-start" }} mb={6}>
-              <Box w={16} h={16} position="relative">
+              <Box w={20} h={20} position="relative">
                 <Image src={logoImg} alt="SmartQuit logo" fill style={{ objectFit: "contain" }} />
               </Box>
               <Text fontSize="3xl" fontWeight="bold" color="green.700">SmartQuit</Text>
@@ -420,9 +425,12 @@ export default function LoginPage() {
 
                     <Button
                       type="submit"
-                      colorScheme="green"
                       size="lg"
                       w="full"
+                      bg="#7AC555"
+                      backgroundColor="#7AC555"
+                      color="white"
+                      _hover={{ bg: '#6BB04B' }}
                       isLoading={isLoading}
                       loadingText={mode === 'login' ? 'Signing in...' : mode === 'register' ? 'Creating account...' : 'Sending...'}
                     >
