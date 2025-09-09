@@ -15,11 +15,11 @@ export function Header() {
   return (
     <Box as="header" position="sticky" top={0} zIndex={50} bg={bg} backdropFilter="saturate(180%) blur(6px)" borderBottomWidth="1px" borderColor={border}>
       <Container maxW="7xl" px={6}>
-        <Flex h={16} align="center" justify="space-between">
+        <Flex h={20} align="center" justify="space-between">
           <HStack gap={3}>
             <Link href="/">
               <HStack gap={2} align="center">
-                <Box w={20} h={20} position="relative">
+                <Box w={16} h={16} position="relative">
                   <Image src={logoImg} alt="SmartQuit logo" fill style={{ objectFit: "contain" }} />
                 </Box>
               </HStack>
