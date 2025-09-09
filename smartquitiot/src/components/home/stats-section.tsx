@@ -16,25 +16,25 @@ export function StatsSection() {
     <Box as="section" py={{ base: 12, md: 20 }} bgGradient="linear(to-br, green.50, white)">
       <Container maxW="7xl" px={6}>
         <VStack gap={2} textAlign="center" mb={12}>
-          <Heading as="h2" size="xl">SmartQuit by the Numbers</Heading>
+          <Heading as="h2" size="xl" color="#7AC555">SmartQuit by the Numbers</Heading>
           <Text color="gray.600">Join thousands who have transformed their lives</Text>
         </VStack>
         <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} gap={8}>
           {stats.map(s => (
             <VStack key={s.title} gap={4} bg={cardBg} rounded="xl" p={8} shadow="lg">
               <HStack w={20} h={20} bg="white" rounded="full" alignItems="center" justifyContent="center" shadow="md">
-                <Icon as={s.icon} color="green.600" boxSize={8} />
+                <Icon as={s.icon} color="#7AC555" boxSize={8} fontWeight="bold" />
               </HStack>
               <VStack>
-                <Text fontSize="sm" color="gray.600">{s.title}</Text>
-                <Text fontSize="2xl" fontWeight="bold" color="green.700">{s.value}</Text>
+                <Text fontSize="sm" fontWeight="bold" color="#7AC555">{s.title}</Text>
+                <Text fontSize="xl" fontWeight="bold" color="#7AC555">{s.value}</Text>
               </VStack>
-              <Text color="gray.600" fontSize="sm">{s.description}</Text>
+              <Text color="gray.600" fontSize="sm" noOfLines={2} textAlign="center">{s.description}</Text>
             </VStack>
           ))}
         </SimpleGrid>
         <VStack gap={4} mt={16}>
-          <Heading as="h3" size="lg">Be Part of Our Success Story</Heading>
+          <Heading as="h3" size="lg" color="#7AC555">Be Part of Our Success Story</Heading>
           <Text color="gray.600" fontSize="lg" maxW="2xl" textAlign="center">
             Every day, more people join SmartQuit and take control of their health. Start your journey today.
           </Text>

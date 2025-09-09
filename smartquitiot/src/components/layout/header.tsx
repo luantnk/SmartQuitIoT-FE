@@ -2,8 +2,10 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Box, Container, Flex, HStack, IconButton, Button, Text } from "@chakra-ui/react"
 import { FiMenu, FiBell } from "react-icons/fi"
+import logoImg from "@/assets/logo/logo.png"
 
 export function Header() {
   const [isLoggedIn] = useState(false)
@@ -17,10 +19,9 @@ export function Header() {
           <HStack gap={3}>
             <Link href="/">
               <HStack gap={2} align="center">
-                <Flex w={10} h={10} bg="green.500" rounded="full" align="center" justify="center">
-                  <Text color="white" fontWeight="bold" fontSize="xl">S</Text>
-                </Flex>
-                <Text fontSize="xl" fontWeight="bold" color="green.600">SmartQuit</Text>
+                <Box w={20} h={20} position="relative">
+                  <Image src={logoImg} alt="SmartQuit logo" fill style={{ objectFit: "contain" }} />
+                </Box>
               </HStack>
             </Link>
           </HStack>
@@ -64,7 +65,7 @@ export function Header() {
             ) : (
               <HStack>
                 <Link href="/login"><Button variant="ghost" size="sm">Login</Button></Link>
-                <Link href="/register"><Button colorScheme="green" size="sm">Get Started</Button></Link>
+                <Link href="/login?mode=register"><Button size="sm" bg="#7AC555" backgroundColor="#7AC555" color="white" _hover={{ bg: "#6BB04B" }}>Get Started</Button></Link>
               </HStack>
             )}
             <IconButton aria-label="Menu" display={{ base: "inline-flex", md: "none" }} variant="ghost">

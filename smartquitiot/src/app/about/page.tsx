@@ -127,8 +127,8 @@ import {
                 </Text>
                 <Button
                   size="lg"
-                  bg="white"
-                  color="green.600"
+                  bg="#7AC555"
+                  backgroundColor="#7AC555"
                   px={8}
                   py={6}
                   rounded="full"

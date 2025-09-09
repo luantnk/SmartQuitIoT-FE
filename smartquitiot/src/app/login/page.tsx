@@ -1,19 +1,18 @@
 "use client"
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
+import Image from "next/image"
 import {
   Box,
   Container,
   Flex,
-  Stack,
   Text,
   Button,
   Input,
   InputGroup,
   InputRightElement,
   IconButton,
-  Link,
   Divider,
   useToast,
   FormControl,
@@ -27,6 +26,7 @@ import {
 import { FiEye, FiEyeOff, FiMail, FiArrowLeft } from "react-icons/fi"
 import { FaGoogle, FaFacebook } from "react-icons/fa"
 import NextLink from "next/link"
+import logoImg from "@/assets/logo/logo.png"
 
 type AuthMode = 'login' | 'register' | 'forgot'
 
@@ -46,6 +46,14 @@ export default function LoginPage() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const toast = useToast()
   const router = useRouter()
+  const params = useSearchParams()
+
+  useEffect(() => {
+    const p = params.get('mode') as AuthMode | null
+    if (p === 'register' || p === 'login' || p === 'forgot') {
+      setMode(p)
+    }
+  }, [params])
 
   const handleInputChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }))
@@ -92,21 +100,39 @@ export default function LoginPage() {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false)
+      if (mode === 'login') {
+        toast({
+          title: 'Welcome back!',
+          description: 'You have successfully logged in.',
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+        })
+        router.push('/')
+        return
+      }
+
+      if (mode === 'forgot') {
+        toast({
+          title: 'OTP sent',
+          description: 'We sent a 6-digit code to your email for verification.',
+          status: 'success',
+          duration: 2500,
+          isClosable: true,
+        })
+        router.push(`/otp?email=${encodeURIComponent(formData.email)}`)
+        return
+      }
+
+      // register
       toast({
-        title: mode === 'login' ? 'Welcome back!' : mode === 'register' ? 'Account created!' : 'Reset link sent!',
-        description: mode === 'login' ? 'You have successfully logged in.' : mode === 'register' ? 'Please check your email to verify your account.' : 'Please check your email for reset instructions.',
+        title: 'Account created!',
+        description: 'Please check your email to verify your account.',
         status: 'success',
         duration: 3000,
         isClosable: true,
       })
-      
-      // Navigate to home page after successful login
-      if (mode === 'login') {
-        setTimeout(() => {
-          router.push('/')
-        }, 1000)
-      }
-    }, 1500)
+    }, 1200)
   }
 
   const renderForm = () => {
@@ -164,7 +190,7 @@ export default function LoginPage() {
                 onChange={(e) => handleInputChange('rememberMe', e.target.checked)}
                 colorScheme="green"
               >
-                <Text fontSize="sm" color="gray.600">Remember me</Text>
+                <Text fontSize="sm" color="gray.600">Remember this device</Text>
               </Checkbox>
               <Button
                 variant="link"
@@ -322,7 +348,7 @@ export default function LoginPage() {
     switch (mode) {
       case 'login': return 'Sign in to continue your smoke-free journey'
       case 'register': return 'Join thousands who have successfully quit smoking'
-      case 'forgot': return 'We will help you get back on track'
+      case 'forgot': return 'We\'ll send a 6-digit code to your email to verify'
     }
   }
 
@@ -330,7 +356,7 @@ export default function LoginPage() {
     switch (mode) {
       case 'login': return 'Sign In'
       case 'register': return 'Create Account'
-      case 'forgot': return 'Send Reset Link'
+      case 'forgot': return 'Send OTP'
     }
   }
 
@@ -347,9 +373,9 @@ export default function LoginPage() {
           {/* Left Side - Branding */}
           <Box flex={1} textAlign={{ base: "center", lg: "left" }}>
             <HStack spacing={3} justify={{ base: "center", lg: "flex-start" }} mb={6}>
-              <Flex w={12} h={12} bg="green.500" rounded="full" align="center" justify="center">
-                <Text color="white" fontWeight="bold" fontSize="2xl">S</Text>
-              </Flex>
+              <Box w={16} h={16} position="relative">
+                <Image src={logoImg} alt="SmartQuit logo" fill style={{ objectFit: "contain" }} />
+              </Box>
               <Text fontSize="3xl" fontWeight="bold" color="green.700">SmartQuit</Text>
             </HStack>
             <Text fontSize="xl" color="gray.600" mb={8} maxW="md">

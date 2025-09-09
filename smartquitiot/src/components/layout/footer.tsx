@@ -1,9 +1,11 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Box, Container, SimpleGrid, Stack, Text, HStack, Icon, Input, Button } from "@chakra-ui/react"
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa"
 import { MdMail, MdPhone, MdLocationOn } from "react-icons/md"
+import logoImg from "@/assets/logo/logo.png"
 
 const footerLinks = {
   product: [
@@ -42,8 +44,8 @@ export function Footer() {
         <SimpleGrid columns={{ base: 1, md: 4 }} gap={12}>
           <Stack gap={6}>
             <HStack gap={3}>
-              <Box w={10} h={10} bg="green.500" rounded="full" display="flex" alignItems="center" justifyContent="center">
-                <Text fontWeight="bold" color="white">S</Text>
+              <Box w={20} h={20} position="relative">
+                <Image src={logoImg} alt="SmartQuit logo" fill style={{ objectFit: "contain" }} />
               </Box>
               <Text fontSize="2xl" fontWeight="bold" color="green.700">SmartQuit</Text>
             </HStack>
@@ -51,9 +53,9 @@ export function Footer() {
               Empowering millions of people to quit smoking and live healthier lives. Join our community and start your smoke-free journey today.
             </Text>
             <Stack gap={2} color="gray.600">
-              <HStack gap={2}><Icon as={MdMail} color="green.600" /><Text>support@smartquit.com</Text></HStack>
-              <HStack gap={2}><Icon as={MdPhone} color="green.600" /><Text>+1 (555) 123-4567</Text></HStack>
-              <HStack gap={2}><Icon as={MdLocationOn} color="green.600" /><Text>123 Health Street, Wellness City, WC 12345</Text></HStack>
+              <HStack gap={2}><Icon as={MdMail} color="#7AC555" /><Text>support@smartquit.com</Text></HStack>
+              <HStack gap={2}><Icon as={MdPhone} color="#7AC555" /><Text>+1 (555) 123-4567</Text></HStack>
+              <HStack gap={2}><Icon as={MdLocationOn} color="#7AC555" /><Text>123 Health Street, Wellness City, WC 12345</Text></HStack>
             </Stack>
           </Stack>
           <Stack gap={3}>
@@ -92,21 +94,21 @@ export function Footer() {
 
         <SimpleGrid columns={{ base: 1, md: 2 }} gap={8} alignItems="center">
           <Text color="gray.500">© 2024 SmartQuit. All rights reserved. Made with ❤️ for a healthier world.</Text>
-          <HStack gap={6} justify={{ base: "flex-start", md: "flex-end" }} color="gray.500">
+          <HStack gap={6} justify={{ base: "flex-start", md: "flex-end" }} color="#7AC555">
             <Link href="#" aria-label="Facebook">
-              <Icon as={FaFacebook} boxSize={5} _hover={{ color: "green.600" }} transition="color 0.2s" />
+              <Icon as={FaFacebook} boxSize={5} />
             </Link>
             <Link href="#" aria-label="Twitter">
-              <Icon as={FaTwitter} boxSize={5} _hover={{ color: "green.600" }} transition="color 0.2s" />
+              <Icon as={FaTwitter} boxSize={5} />
             </Link>
             <Link href="#" aria-label="Instagram">
-              <Icon as={FaInstagram} boxSize={5} _hover={{ color: "green.600" }} transition="color 0.2s" />
+              <Icon as={FaInstagram} boxSize={5} />
             </Link>
             <Link href="#" aria-label="LinkedIn">
-              <Icon as={FaLinkedin} boxSize={5} _hover={{ color: "green.600" }} transition="color 0.2s" />
+              <Icon as={FaLinkedin} boxSize={5} />
             </Link>
             <Link href="#" aria-label="YouTube">
-              <Icon as={FaYoutube} boxSize={5} _hover={{ color: "green.600" }} transition="color 0.2s" />
+              <Icon as={FaYoutube} boxSize={5} />
             </Link>
           </HStack>
         </SimpleGrid>

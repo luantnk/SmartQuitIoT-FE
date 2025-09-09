@@ -19,26 +19,26 @@ export function FeaturesSection() {
     <Box as="section" py={{ base: 12, md: 20 }} bg="white">
       <Container maxW="7xl" px={6}>
         <VStack gap={4} textAlign="center" mb={12}>
-          <Heading as="h2" size="xl">Everything You Need to Succeed</Heading>
+          <Heading as="h2" size="xl" color="#7AC555">Everything You Need to Succeed</Heading>
           <Text color="gray.600" maxW="3xl">SmartQuit provides comprehensive tools to support your quit journey. From tracking progress to community support, we’ve got you covered.</Text>
         </VStack>
         <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} gap={8}>
           {features.map((f) => (
             <VStack key={f.title} gap={4} p={6} bg="white" borderWidth="1px" borderColor="gray.100" rounded="xl" shadow="md" align="center">
               <HStack w={16} h={16} bg="green.50" rounded="full" alignItems="center" justifyContent="center" shadow="sm">
-                <Icon as={f.icon} color="green.600" boxSize={8} />
+                <Icon as={f.icon} color="#7AC555" boxSize={8} />
               </HStack>
-              <Heading as="h4" size="md">{f.title}</Heading>
-              <Text color="gray.600" textAlign="center">{f.description}</Text>
+              <Heading as="h4" size="md" color="#7AC555">{f.title}</Heading>
+              <Text color="gray.600" textAlign="center" fontSize="sm" noOfLines={3}>{f.description}</Text>
             </VStack>
           ))}
         </SimpleGrid>
 
         <VStack gap={6} mt={16}>
-          <Heading as="h3" size="lg">Ready to Start Your Journey?</Heading>
+          <Heading as="h3" size="lg" color="#7AC555">Ready to Start Your Journey?</Heading>
           <HStack>
-            <Button onClick={() => (window.location.href = "/register")} colorScheme="green">Get Started Now →</Button>
-            <Button onClick={() => (window.location.href = "/features")} variant="ghost">Learn More →</Button>  
+            <Button onClick={() => (window.location.href = "/register")} bg="#7AC555" backgroundColor="#7AC555" color="white" _hover={{ bg: "#6BB04B" }}>Get Started Now →</Button>
+            <Button onClick={() => (window.location.href = "/features")} variant="outline" borderColor="#7AC555" color="#7AC555" _hover={{ bg: "#E8F7EC" }}>Learn More →</Button>  
           </HStack>
         </VStack>
       </Container>
