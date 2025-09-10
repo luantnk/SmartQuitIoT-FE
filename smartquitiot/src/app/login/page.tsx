@@ -195,12 +195,12 @@ export default function LoginPage() {
                 onChange={(e) => handleInputChange('rememberMe', e.target.checked)}
                 colorScheme="green"
               >
-                <Text fontSize="sm" color="gray.600">Remember this device</Text>
+                <Text fontSize="sm" color="gray.600" marginTop={4}>Remember this device</Text>
               </Checkbox>
               <Button
                 variant="link"
                 size="sm"
-                color="green.600"
+                color="#7AC555"
                 onClick={() => setMode('forgot')}
               >
                 Forgot password?
@@ -369,7 +369,7 @@ export default function LoginPage() {
     <Box minH="100vh" bg="green.50">
       <Container maxW="7xl" px={6} py={8}>
         <NextLink href="/">
-          <Button leftIcon={<FiArrowLeft />} variant="ghost" color="green.600" mb={8}>
+          <Button leftIcon={<FiArrowLeft />} variant="ghost" color="#7AC555" mb={8}>
             Back to Home
           </Button>
         </NextLink>
@@ -381,13 +381,13 @@ export default function LoginPage() {
               <Box w={20} h={20} position="relative">
                 <Image src={logoImg} alt="SmartQuit logo" fill style={{ objectFit: "contain" }} />
               </Box>
-              <Text fontSize="3xl" fontWeight="bold" color="green.700">SmartQuit</Text>
+              <Text fontSize="3xl" fontWeight="bold" color="#7AC555">SmartQuit</Text>
             </HStack>
             <Text fontSize="xl" color="gray.600" mb={8} maxW="md">
               Take control of your health and join millions who have successfully quit smoking with our proven methods and supportive community.
             </Text>
             <Box display={{ base: "none", lg: "block" }}>
-              <Text fontSize="lg" fontWeight="semibold" color="green.700" mb={4}>
+              <Text fontSize="lg" fontWeight="semibold" color="#7AC555" mb={4}>
                 Why Choose SmartQuit?
               </Text>
               <VStack align="flex-start" spacing={3} color="gray.600">
@@ -478,9 +478,10 @@ export default function LoginPage() {
                       <Text color="gray.600">Don&apos;t have an account?</Text>
                       <Button
                         variant="link"
-                        color="green.600"
+                        color="#7AC555"
                         size="sm"
                         onClick={() => setMode('register')}
+                        marginBottom={3}
                       >
                         Sign up
                       </Button>
@@ -492,10 +493,10 @@ export default function LoginPage() {
                       <Text color="gray.600">Already have an account?</Text>
                       <Button
                         variant="link"
-                        color="green.600"
+                        color="#7AC555"
                         size="sm"
                         onClick={() => setMode('login')}
-                      >
+                        >
                         Sign in
                       </Button>
                     </HStack>
@@ -506,7 +507,7 @@ export default function LoginPage() {
                       <Text color="gray.600">Remember your password?</Text>
                       <Button
                         variant="link"
-                        color="green.600"
+                        color="#7AC555"
                         size="sm"
                         onClick={() => setMode('login')}
                       >
