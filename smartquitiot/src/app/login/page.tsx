@@ -378,7 +378,7 @@ export default function LoginPage() {
           {/* Left Side - Branding */}
           <Box flex={1} textAlign={{ base: "center", lg: "left" }}>
             <HStack spacing={3} justify={{ base: "center", lg: "flex-start" }} mb={6}>
-              <Box w={20} h={20} position="relative">
+              <Box w={24} h={24} position="relative">
                 <Image src={logoImg} alt="SmartQuit logo" fill style={{ objectFit: "contain" }} />
               </Box>
               <Text fontSize="3xl" fontWeight="bold" color="#7AC555">SmartQuit</Text>
